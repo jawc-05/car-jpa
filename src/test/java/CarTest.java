@@ -5,6 +5,8 @@ import br.com.jawc.domain.Car;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * @author jawc
  */
@@ -25,7 +27,13 @@ public class CarTest {
         car.setName("SEAL");
         car.setModel("COMFORT");
 
+        Car car2 = new Car();
+        car2.setBrand(brand);
+        car2.setName("Dolphin");
+        car2.setModel("MINI");
+
         carDao.save(car);
+        carDao.save(car2);
         Assert.assertNotNull(car.getId());
 
         Car carConsulted = carDao.findById(car.getId());
@@ -34,13 +42,17 @@ public class CarTest {
         car.setModel("EXCELLENCE");
         carDao.update(car);
 
+        List list = carDao.findAll();
+        Assert.assertNotNull(list);
+        Assert.assertEquals(list.size(), 2);
+
         Car carConsultedUpd = carDao.findById(car.getId());
         Assert.assertEquals(car.getModel(), carConsultedUpd.getModel());
 
         carDao.delete(carConsultedUpd);
         Car carConsultedDel = carDao.findById(carConsultedUpd.getId());
         Assert.assertNull(carConsultedDel);
-
+        carDao.delete(car2);
 
     }
 
