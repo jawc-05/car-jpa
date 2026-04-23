@@ -5,6 +5,8 @@ package br.com.jawc.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tb_car")
 public class Car {
@@ -22,6 +24,14 @@ public class Car {
 
     @ManyToOne
     private Brand brand;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tb_car_accesories",
+            joinColumns = {@JoinColumn(name = "id_car_fk")},
+            inverseJoinColumns = {@JoinColumn(name = "id_accessories_fk")}
+    )
+    private List<Accessories> accesories;
 
     public Long getId() {
         return id;
@@ -53,5 +63,13 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public List<Accessories> getAccesories() {
+        return accesories;
+    }
+
+    public void setAccesories(List<Accessories> accesories) {
+        this.accesories = accesories;
     }
 }

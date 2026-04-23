@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_accesories")
-public class Acessories {
+public class Accessories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accesories_seq")
