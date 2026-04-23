@@ -42,7 +42,16 @@ public class GenericDAO<T> implements IGenericDAO<T>{
     }
     @Override
     public T update(T entity) {
-        return null;
+        try{
+            em.getTransaction().begin();
+            T entityMerged = em.merge(entity);
+            em.getTransaction().commit();
+            return entityMerged;
+        }catch (Exception e){
+            if(em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }throw e;
+        }
     }
 
     @Override

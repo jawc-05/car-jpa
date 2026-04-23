@@ -9,8 +9,12 @@ import br.com.jawc.domain.Car;
 
 public class CarDAO extends GenericDAO<Car> implements IGenericDAO<Car> {
 
-    @Override
-    public Car save(Car entity) {
-        return super.save(entity);
-    }
+//    @Override
+//    public Car save(Car entity) {
+//        return super.save(entity);
+//    }
+//
+//    public Car findById(Long id){
+//        return em.find(Car.class, id);
+//    }
 }

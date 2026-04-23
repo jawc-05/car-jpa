@@ -27,5 +27,11 @@ public class CarTest {
 
         carDao.save(car);
         Assert.assertNotNull(car.getId());
+
+        Car carConsulted = carDao.findById(car.getId());
+        Assert.assertNotNull(carConsulted);
+
+
     }
+
 }
