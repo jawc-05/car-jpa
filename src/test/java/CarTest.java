@@ -26,6 +26,6 @@ public class CarTest {
         car.setModel("COMFORT");
 
         carDao.save(car);
-        Assert.assertEquals("BYD", "BYD");
+        Assert.assertNotNull(car.getId());
     }
 }
