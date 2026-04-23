@@ -3,11 +3,16 @@
  */
 package br.com.jawc.dao.generic;
 
+import br.com.jawc.dao.util.JPAUtil;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
 public class GenericDAO<T> implements IGenericDAO<T>{
+
+    public GenericDAO() {
+        this.em = JPAUtil.getEntityManager();
+    }
 
     protected EntityManager em;
 
