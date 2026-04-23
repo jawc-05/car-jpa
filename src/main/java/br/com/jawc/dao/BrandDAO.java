@@ -8,8 +8,8 @@ import br.com.jawc.domain.Brand;
 
 public class BrandDAO extends GenericDAO<Brand> {
 
-    @Override
-    public Brand save(Brand entity) {
-        return super.save(entity);
-    }
+//    @Override
+//    public Brand save(Brand entity) {
+//        return super.save(entity);
+//    }
 }
