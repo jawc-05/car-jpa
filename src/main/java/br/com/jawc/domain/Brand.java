@@ -16,7 +16,7 @@ public class Brand {
     @SequenceGenerator(name="brand_seq", sequenceName = "seq_brand", initialValue = 1, allocationSize = 1)
     private Long id;
 
-    @Column(name = "name",  nullable = false, length = 60, unique = true)
+    @Column(name = "name",  nullable = false, length = 60)
     private String name;
 
     @OneToMany(mappedBy = "brand")

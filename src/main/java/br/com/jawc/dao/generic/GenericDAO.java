@@ -73,6 +73,7 @@ public class GenericDAO<T> implements IGenericDAO<T>{
 
     @Override
     public List findAll() {
-        return List.of();
+        String jpql = "SELECT e FROM " + persistentClass.getName() + " e";
+        return em.createQuery(jpql, persistentClass).getResultList();
     }
 }
