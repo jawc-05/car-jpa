@@ -31,6 +31,13 @@ public class CarTest {
         Car carConsulted = carDao.findById(car.getId());
         Assert.assertNotNull(carConsulted);
 
+        car.setModel("EXCELLENCE");
+        carDao.update(car);
+
+        Car carConsultedUpd = carDao.findById(car.getId());
+        Assert.assertEquals(car.getModel(), carConsultedUpd.getModel());
+
+
 
     }
 
