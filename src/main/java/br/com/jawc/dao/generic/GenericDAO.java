@@ -56,7 +56,17 @@ public class GenericDAO<T> implements IGenericDAO<T>{
 
     @Override
     public void delete(T entity) {
-
+        try {
+            em.getTransaction().begin();
+            T entityMerged = em.merge(entity);
+            em.remove(entityMerged);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        }
     }
 
 
