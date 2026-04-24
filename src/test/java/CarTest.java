@@ -1,5 +1,7 @@
+import br.com.jawc.dao.AccessoriesDAO;
 import br.com.jawc.dao.BrandDAO;
 import br.com.jawc.dao.CarDAO;
+import br.com.jawc.domain.Accessories;
 import br.com.jawc.domain.Brand;
 import br.com.jawc.domain.Car;
 import org.junit.Assert;
@@ -17,6 +19,7 @@ public class CarTest {
     public void CarTest(){
         CarDAO carDao = new CarDAO();
         BrandDAO brandDao = new BrandDAO();
+        AccessoriesDAO accessoriesDAO = new AccessoriesDAO();
 
         Brand brand = new Brand();
         brand.setName("BYD");
@@ -26,6 +29,11 @@ public class CarTest {
         car.setBrand(brand);
         car.setName("SEAL");
         car.setModel("COMFORT");
+        Accessories accessories = new Accessories();
+        accessories.setName("SOM JBL");
+        accessoriesDAO.save(accessories);
+        accessories.setName("TETO SOLAR");
+        accessoriesDAO.save(accessories);
 
         Car car2 = new Car();
         car2.setBrand(brand);
